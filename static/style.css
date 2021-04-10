@@ -22,6 +22,7 @@ body {
 	display: table;
 	margin: 0 auto;
 }
+
 #background {
 	position: absolute;
 	border-style: solid;
