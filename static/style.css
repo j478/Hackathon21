@@ -1,4 +1,4 @@
-* {
+*{
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -10,59 +10,25 @@ html, body {
 
 body {
     overflow: hidden;
-    padding: 20px;
+    margin: 20px 20px 20px 20px;
 	background-color: #f8f8ff;
 }
 
-.interaction {
+#username {
+	position: abosolute;
+}
+
+#password {
+	position: abosolute;
+	left: 100px;
+}
+
+#nav_bar {
 	position: absolute;
+	width: 90%;
+	height: 100px;
 	left: 50%;
-	top: 50%;
-	margin-left: -310px;
-	margin-top: -150px;
-}
-
-.background {
-	display: flex;
-	position: absolute;
-	justify-content: center;
-	height: 300px;
-	width: 300px;
+	margin-left: -90%;
 	border-style: solid;
-	border-width: thin;
 	border-color: black;
-	background-color: #eeeeee;
-}
-
-.text_box {
-	overflow: auto;
-}
-
-#submit {
-	position: absolute;
-	left: 283px;
-	top: 350px;
-}
-
-#image {
-	position: absolute;
-	height: 250px;
-	width: 250px;
-	top: 25px;
-}
-
-#add_file {
-	position: absolute;
-	top: 310px;
-}
-
-#text_field {
-	position: absolute;
-	left: 320px;
-}
-
-#text {
-	margin: 20px 20px 20px 20px;
-	height: 260px;
-	overflow: auto;
 }

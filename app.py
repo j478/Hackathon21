@@ -11,9 +11,7 @@ app = Flask(__name__,
 			static_folder='static',
 			static_url_path='/static')
 
-#ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PDF', 'PNG', 'JPG', 'JPEG', 'GIF'}
-#UPLOAD_FOLDER = 'static/img/uploaded'
-#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 # prevents the browser from caching files
 app.config['SECRET_KEY'] = "MySecretKey"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
