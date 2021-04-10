@@ -19,12 +19,12 @@ body {
 }
 
 #username {
-	position: abosolute;
+	position: absolute;
 }
 
 #password {
-	position: abosolute;
-	left: 100px;
+	position: absolute;
+	
 }
 
 
