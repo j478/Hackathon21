@@ -69,21 +69,9 @@ def login():
 def verify_login():
 	if request.method == 'POST':
 		if (request.form['username'] == 'Jake' and request.form['password'] == 'D') or (request.form['username'] == 'Caleb' and request.form['password'] == 'B'):
-			return redirect('/home')
+			return redirect('/dashboard')
 		else:
 			return redirect('/')
-			
-@app.route("/dashboard")
-def home():
-	return render_template('home.html')
-"""@app.route('/login', methods=['POST','GET'])
-def login():
-	form = loginForm()
-	if form.validate_on_submit:
-		print(form.username.data)
-		print(form.password.data)
-	return render_template('login.html', form=form)
-"""
 
 if __name__ == '__main__':
 	db.create_all()
