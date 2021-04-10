@@ -14,11 +14,13 @@ app = Flask(__name__,
 #ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PDF', 'PNG', 'JPG', 'JPEG', 'GIF'}
 #UPLOAD_FOLDER = 'static/img/uploaded'
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
+app.config['SECRET_KEY'] = "MySecretKey"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 #database
 db = SQLAlchemy(app)
+
+class providers(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	username = db.Column(db.String(100))
 	password = db.Column(db.String(100))
@@ -38,11 +40,12 @@ def index():
 	Serve our app's homepage.
 	:return: Jinja2-rendered HTML file.
 	"""
-	return render_template('index.html')
+	form = loginForm()
+	return render_template('index.html', form=form)
 
 
 @app.route('/login', methods=['POST'])
-def process_image():
+def login():
 	form = loginForm()
 	return render_template('index.html', form=form)
 

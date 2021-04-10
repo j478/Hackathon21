@@ -7,17 +7,19 @@
 	<meta http-equiv='pragma' content='no-cache'>
     <title>P3 Team 6</title>
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<form method="post" action="{{ url_for('login') }}">
-		<!--{{ form.csrf_token }}-->
-		{{ form.username }}
-		{{ form.username.label }}
-		{{ form.passowrd }}
-		{{ form.password.label }}
+		{{ form.csrf_token }}
+		<div  id=username>
+			{{ form.username }}
+			{{ form.username.label }}
+		</div>
+		<div id=password>
+			{{ form.password }}
+			{{ form.password.label }}
+		</div>
 	</form>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 	<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
