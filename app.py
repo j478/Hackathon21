@@ -73,7 +73,7 @@ def verify_login():
 		else:
 			return redirect('/')
 			
-@app.route("/home")
+@app.route("/dashboard")
 def home():
 	return render_template('home.html')
 """@app.route('/login', methods=['POST','GET'])

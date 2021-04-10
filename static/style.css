@@ -31,13 +31,13 @@ body {
 }
 
 #username {
-	position: absolute;
+	position: abosolute;
 }
 
 #password {
-	position: absolute;
+	position: abosolute;
+	left: 100px;
 }
-
 
 nav{
 	height: 80px;
