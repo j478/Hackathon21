@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from werkzeug.utils import secure_filename
@@ -14,11 +14,13 @@ app = Flask(__name__,
 #ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PDF', 'PNG', 'JPG', 'JPEG', 'GIF'}
 #UPLOAD_FOLDER = 'static/img/uploaded'
 #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 # prevents the browser from caching files
 app.config['SECRET_KEY'] = "MySecretKey"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 #database
 db = SQLAlchemy(app)
+
 class providers(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	username = db.Column(db.String(100))
@@ -33,40 +35,37 @@ class loginForm(FlaskForm):
 	username = StringField('username')
 	password = PasswordField('password')
 	
-@app.route('/')
-def index():
+@app.route('/', methods=['POST','GET'])
+def login():
 	"""
-	Serve our app's homepage.
+	Serve our app's login page.
 	:return: Jinja2-rendered HTML file.
 	"""
 	form = loginForm()
-	return render_template('index.html', form=form)
+	return render_template('login.html', form=form)
 
-
-@app.route('/login', methods=['POST','GET'])
+# Checks login info with database, redirects back to login if false
+# Returns Jinja2-rendered HTML file
+@app.route("/verify_login", methods=['POST'])
+def verify_login():
+	if request.method == 'POST':
+		if (request.form['username'] == 'Jake' and request.form['password'] == 'D') or (request.form['username'] == 'Caleb' and request.form['password'] == 'B'):
+			return redirect('/home')
+		else:
+			return redirect('/')
+			
+@app.route("/home")
+def home():
+	return render_template('home.html')
+"""@app.route('/login', methods=['POST','GET'])
 def login():
 	form = loginForm()
-
 	if form.validate_on_submit:
 		print(form.username.data)
 		print(form.password.data)
-
-	return render_template('index.html', form=form)
-
+	return render_template('login.html', form=form)
+"""
 
 if __name__ == '__main__':
 	db.create_all()
 	app.run()
-
-
-
-	"""found_provider = providers.query.filter_by(username=providers).first()
-
-	if found_provider:
-		session["username"] = found_provider.username
-
-	else:
-		prov = providers(provider, "")
-		bd.session.add(prov)
-		db.commit()
-		"""
