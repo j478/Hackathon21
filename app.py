@@ -5,14 +5,27 @@ from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 import os
 
+
 app = Flask(__name__,
 			template_folder='templates',
 			static_folder='static',
 			static_url_path='/static')
 
-ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PDF', 'PNG', 'JPG', 'JPEG', 'GIF'}
-UPLOAD_FOLDER = 'static/img/uploaded'
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+#ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif', 'PDF', 'PNG', 'JPG', 'JPEG', 'GIF'}
+#UPLOAD_FOLDER = 'static/img/uploaded'
+#app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+#database
+db = SQLAlchemy(app)
+	_id = db.Column("id", db.Integer, primary_key=True)
+	username = db.Column(db.String(100))
+	password = db.Column(db.String(100))
+
+	def __init__(self, username, password):
+		self.username = username
+		self.password = password
 
 
 @app.route('/')
@@ -32,32 +45,6 @@ def process_image():
 	"""
 
 
-def upload(file):
-	"""
-	Upload file to server.
-	:param file: file.
-	:return: relative path in /uploaded to upload on server.
-	"""
-	if not os.path.isdir(app.config['UPLOAD_FOLDER']):
-		os.makedirs(app.config['UPLOAD_FOLDER'])
-
-		filename = secure_filename(file.filename)
-	file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-	print(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
-	print(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-
-	return os.path.join(app.config['UPLOAD_FOLDER'], filename)
-
-
-def file_good(file):
-	if file.filename == '':
-		return False
-	elif file.filename.split('.')[len(file.filename.split('.'))-1].lower() not in ALLOWED_EXTENSIONS:
-		return False
-	else:
-		return True
-
-
 if __name__ == '__main__':
+	db.create_all()
 	app.run()
