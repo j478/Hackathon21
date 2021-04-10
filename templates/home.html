@@ -9,18 +9,9 @@
 	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-	<form method="post" action="{{ url_for('login') }}">
-		{{ form.csrf_token }}
-		<div  id=username>
-			{{ form.username }}
-			{{ form.username.label }}
-		</div>
-		<div id=password>
-			{{ form.password }}
-			{{ form.password.label }}
-		</div>
-		<input type=submit>submit</input>
-	</form>
+	<div id="nav_bar">
+	
+	</div>
 	<script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
