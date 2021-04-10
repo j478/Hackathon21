@@ -19,6 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 #database
 db = SQLAlchemy(app)
+class providers(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	username = db.Column(db.String(100))
 	password = db.Column(db.String(100))
@@ -42,8 +43,19 @@ def index():
 
 
 @app.route('/login', methods=['POST'])
-def process_image():
+def login():
 	form = loginForm()
+
+	found_provider = providers.query.filter_by(username=providers).first()
+
+	if found_provider:
+		session["username"] = found_provider.username
+
+	else:
+		prov = providers(provider, "")
+		bd.session.add(prov)
+		db.commit()
+
 	return render_template('index.html', form=form)
 
 
