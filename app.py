@@ -3,8 +3,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
+import pymysql
 import os
-#import data.py 
 
 app = Flask(__name__,
 			template_folder='templates',
