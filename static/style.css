@@ -1,17 +1,21 @@
 *{
-	margin-left: 0;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	/*margin-left: 0;
 	margin-right: 0;
+	*/
 }
 
 html, body {
-    width: 100%;
+    width: 90%;
     height: 100%;
 }
 
 body {
     overflow: hidden;
     margin: 20px 20px 20px 20px;
-	background-color: #f8f8ff;
+	background-color: #242424;
 }
 
 #username {
@@ -23,12 +27,39 @@ body {
 	left: 100px;
 }
 
-#nav_bar {
-	position: absolute;
-	width: 90%;
-	height: 100px;
-	left: 50%;
-	margin-left: -90%;
-	border-style: solid;
-	border-color: black;
+
+nav{
+	height: 80px;
 }
+
+
+nav ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav li{
+	display: inline-block;
+	margin-right: 70px;
+	padding-bottom: 30px;
+}
+
+header{
+	
+	background: #3b6ab1
+}
+
+header::after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+nav a{
+	
+	color: rgb(255, 255, 255);
+	text-transform: uppercase;
+	text-decoration: none;
+}
+

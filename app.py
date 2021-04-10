@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 import os
-import data.py 
+#import data.py 
 
 app = Flask(__name__,
 			template_folder='templates',
@@ -33,6 +33,26 @@ class providers(db.Model):
 class loginForm(FlaskForm):
 	username = StringField('username')
 	password = PasswordField('password')
+
+@app.route('/hospitals')
+def hospitals():
+
+	return render_template('hospitals.html')
+
+@app.route('/inventory')
+def inventory():
+
+	return render_template('inventory.html')
+
+@app.route('/medications')
+def medications():
+
+	return render_template('medications.html')
+
+@app.route('/contact')
+def contact():
+
+	return render_template('contact.html')
 	
 @app.route('/', methods=['POST','GET'])
 def login():
