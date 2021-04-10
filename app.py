@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from werkzeug.utils import secure_filename
+from flask_alchemy import SQLAlchemy
 import os
 
 app = Flask(__name__,
