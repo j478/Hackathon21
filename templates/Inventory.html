@@ -10,24 +10,21 @@
 	</head>
 
 	<body>
-        <form method="post" action="{{ url_for('inventory') }}">
+        <div id="background">
             <header>
                 <h1>Inventory</h1>
                     <nav>
+                        <div class="table">
                         <ul>
                             <li><a href="{{ url_for('dashboard') }}"">Dashboard</a></li>				
                             <li><a href="{{ url_for('medications') }}"">Medications</a></li>
                             <li><a href="{{ url_for('inventory') }}"">Inventory</a></li>
                             <li><a href="{{ url_for('contact') }}"">Contact</a></li>
                         </ul>
+                        </div>
                     </nav>
                 <hr/>
-
-                </div>
             </header>
-            
-            
-        </form>
-        
+        </div>
 	</body>
 </html>
