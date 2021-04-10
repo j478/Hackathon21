@@ -34,10 +34,10 @@ class loginForm(FlaskForm):
 	username = StringField('username')
 	password = PasswordField('password')
 
-@app.route('/hospitals')
-def hospitals():
+@app.route('/dashboard')
+def dashboard():
 
-	return render_template('hospitals.html')
+	return render_template('dashboard.html')
 
 @app.route('/inventory')
 def inventory():
