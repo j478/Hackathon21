@@ -18,13 +18,24 @@ body {
 	background-color: #242424;
 }
 
+.table {
+	display: table;
+	margin: 0 auto;
+}
+#background {
+	position: absolute;
+	border-style: solid;
+	width: 97%;
+	height: 95%;
+	background-color: gray;
+}
+
 #username {
-	position: abosolute;
+	position: absolute;
 }
 
 #password {
-	position: abosolute;
-	left: 100px;
+	position: absolute;
 }
 
 
@@ -37,17 +48,20 @@ nav ul{
 	margin: 0;
 	padding: 0;
 	list-style: none;
+	content: center;
 }
 
 nav li{
 	display: inline-block;
+	border-style: solid;
 	margin-right: 70px;
 	padding-bottom: 30px;
 }
 
 header{
 	
-	background: #3b6ab1
+	background: #3b6ab1;
+	width: 100%;
 }
 
 header::after {
@@ -62,4 +76,3 @@ nav a{
 	text-transform: uppercase;
 	text-decoration: none;
 }
-

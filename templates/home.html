@@ -10,22 +10,26 @@
 	</head>
 
 	<body>
-		<header>
-			<h1>Home page</h1>
-				<nav>
-					<ul>
-						<li><a href="{{ url_for('hospitals') }}"">Hospitals</a></li>				
-						<li><a href="{{ url_for('medications') }}"">Medications</a></li>
-						<li><a href="{{ url_for('nventory') }}"">Supply Levels</a></li>
-						<li><a href="{{ url_for('contact') }}"">Contact</a></li>
-					</ul>
-				</nav>
-			<hr/>
-			<div id="nav_bar">
-		
+		<div id="background">
+			<header>
+				<h1>Home page</h1>
+					<nav>
+						<div class="table">
+							<ul>
+								<li><a href="{{ url_for('hospitals') }}">Hospitals</a></li>				
+								<li><a href="{{ url_for('medications') }}">Medications</a></li>
+								<li><a href="{{ url_for('inventory') }}">Supply Levels</a></li>
+								<li><a href="{{ url_for('contact') }}">Contact</a></li>
+							</ul>
+						</div>
+					</nav>
+				<hr/>
+				<div id="nav_bar">
+			
 
-			</div>
-		</header>
+				</div>
+			</header>
+		</div>
 		<!-- will display graphs of lowest supply levels or levels that require most attention-->
 		<main>
 
