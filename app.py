@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, render_template, request, jsonify, redirect, session
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 import os
-
+import data.py 
 
 app = Flask(__name__,
 			template_folder='templates',
@@ -24,9 +24,10 @@ class providers(db.Model):
 	username = db.Column(db.String(100))
 	password = db.Column(db.String(100))
 
-	def __init__(self, username, password):
+	def __init__(self, username, password, info):
 		self.username = username
 		self.password = password
+		self.info = info 
 
 #loginForm
 class loginForm(FlaskForm):
