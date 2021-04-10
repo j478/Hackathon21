@@ -27,7 +27,11 @@ db = SQLAlchemy(app)
 		self.username = username
 		self.password = password
 
-
+#loginForm
+class loginForm(FlaskForm):
+	username = StringField('username')
+	password = PasswordField('password')
+	
 @app.route('/')
 def index():
 	"""
@@ -37,12 +41,10 @@ def index():
 	return render_template('index.html')
 
 
-@app.route('/process', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def process_image():
-	"""
-	Process a file upload to our server.
-	:return: JSON data resulting from our processing.
-	"""
+	form = loginForm()
+	return render_template('index.html', form=form)
 
 
 if __name__ == '__main__':
