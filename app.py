@@ -43,11 +43,24 @@ def index():
 	return render_template('index.html', form=form)
 
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST','GET'])
 def login():
 	form = loginForm()
 
-	found_provider = providers.query.filter_by(username=providers).first()
+	if form.validate_on_submit:
+		print(form.username.data)
+		print(form.password.data)
+
+	return render_template('index.html', form=form)
+
+
+if __name__ == '__main__':
+	db.create_all()
+	app.run()
+
+
+
+	"""found_provider = providers.query.filter_by(username=providers).first()
 
 	if found_provider:
 		session["username"] = found_provider.username
@@ -56,10 +69,4 @@ def login():
 		prov = providers(provider, "")
 		bd.session.add(prov)
 		db.commit()
-
-	return render_template('index.html', form=form)
-
-
-if __name__ == '__main__':
-	db.create_all()
-	app.run()
+		"""
