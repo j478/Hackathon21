@@ -22,7 +22,7 @@ body {
 	display: table;
 	margin: auto;
 
-	
+
 }
 
 #background {
@@ -53,12 +53,13 @@ nav ul{
 	list-style: none;
 	content: center;
 }
-
+/* Change style of buttons */
 nav li{
 	display: inline-block;
-	border-style: solid;
+	background: #242424;
+	text-align: center;
 	margin-right: 70px;
-	padding-bottom: 30px;
+	padding: 14px 16px;
 }
 
 header{
