@@ -65,6 +65,11 @@ nav{
 	padding-top: 18px;
 }
 
+  canvas {
+	display: inline-block;
+	background: #3b6ab1;
+  }
+
 /* invisible box following each button  */
 nav ul{
 	margin: 0;
