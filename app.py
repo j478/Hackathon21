@@ -4,6 +4,7 @@ from wtforms import StringField, PasswordField
 from werkzeug.utils import secure_filename
 from flask_sqlalchemy import SQLAlchemy
 import pymysql
+import sqlite3
 import os
 
 app = Flask(__name__,
@@ -35,6 +36,9 @@ class providers(db.Model):
 		self.compName = compName
 		self.salesRep = salesRep
 		self.isAdmin = isAdmin
+
+def connect():
+    return sqlite3.connect("data.db")
 
 class drugsInStock(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
