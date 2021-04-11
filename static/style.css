@@ -42,15 +42,31 @@ body {
 	left: 100px;
 }
 
-nav{
-	height: 80px;
+h1{
+	position: relative;
+	background: #3b6ab1;
+	padding: 20px 20px;
+	text-align: center;
+	display: inline-block;
+
 }
 
+h3{
+	padding: 10px;
+}
+/* */
+nav{
+	height: 80px;
+	background: #ce4343;
+	padding-top: 18px;
+}
 
+/* invisible box following each button  */
 nav ul{
 	margin: 0;
 	padding: 0;
 	list-style: none;
+/*  background: #ddd; */
 	content: center;
 }
 /* Change style of buttons */
@@ -67,12 +83,13 @@ header{
 	background: #3b6ab1;
 	width: 100%;
 }
-
+/* ---Does not affect anything that i can see
 header::after {
 	content: '';
 	display: table;
 	clear: both;
 }
+*/
 
 nav a{
 	
