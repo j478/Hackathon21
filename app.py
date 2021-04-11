@@ -14,20 +14,25 @@ app = Flask(__name__,
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0 # prevents the browser from caching files
 app.config['SECRET_KEY'] = "MySecretKey"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 #database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
+
 
 class providers(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	username = db.Column(db.String(100))
 	password = db.Column(db.String(100))
+	compName = db.Column(db.String(100))
+	salesRep = db.Column(db.String(100))
 
-	def __init__(self, username, password, info):
+
+	def __init__(self, username, password, compName, salesRep):
 		self.username = username
 		self.password = password
-		self.info = info 
+		self.compName = compName
+		self.salesRep = salesRep
 
 #loginForm
 class loginForm(FlaskForm):
@@ -74,5 +79,4 @@ def verify_login():
 			return redirect('/')
 
 if __name__ == '__main__':
-	db.create_all()
 	app.run()
