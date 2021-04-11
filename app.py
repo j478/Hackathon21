@@ -111,7 +111,7 @@ def verify_login():
 
 @app.route("/contact_form_submitted", methods=('POST',))
 def contact_form_submitted():
-	
+	print("hello")
 	return render_template('contactFormSuccess.html')
 
 			

@@ -10,12 +10,24 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.0/dist/chart.min.js"></script>
 
         <body>
-            <form method="post" action="{{ url_for('contact_form_submitted') }}">
+            <div id="background">
+            <form action="{{ url_for(/contact_form_submitted') }}">
+                <label for="fname">First name:</label><br>
+                <input type="text" id="fname" name="fname" value="John"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" id="lname" name="lname" value="Doe"><br><br>
+                <input type="submit" value="Submit">
                
-               
-                <input type=submit id="submit_button"></input>
+                <button type=submit id="submit_button"></button>
                 
             </form>
+            <script>
+                xml = new XMLHttpRequest();
+                xml.open('GET', "/contact_form_submitted");
+				xml.send();
+            </script>
+            
 
+        </div>
         </body>
 </html>
