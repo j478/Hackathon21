@@ -64,7 +64,7 @@ nav{
 
 
   canvas {
-	
+	display: inline-block;
 	background: #3b6ab1;
   }
   

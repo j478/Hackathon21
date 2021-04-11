@@ -33,11 +33,11 @@
             <h2>This is content</h2>
 
             
-            <canvas id="chart" width="1" height="1"></canvas>
+            <canvas id="chart" width="400" height="400"></canvas>
              <script> 
                 var ctx = document.getElementById('chart').getContext('2d');
                 var myChart = new Chart(ctx, {
-                    type: 'bar',
+                    type: 'line',
                     data: {
                         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
                         datasets: [{
@@ -67,7 +67,9 @@
                             y: {
                                 beginAtZero: true
                             }
-                        }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false
                     }
                 });
              </script>
