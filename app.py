@@ -95,7 +95,7 @@ def login():
 
 # Checks login info with database, redirects back to login if false
 # Returns Jinja2-rendered HTML file
-@app.route("/verify_login", methods=['POST'])
+@app.route("/verify_login", methods=['POST',])
 def verify_login():
 	if request.method == 'POST':
 		name = request.form['username'];
@@ -109,7 +109,7 @@ def verify_login():
 		else:
 			return redirect('/')
 
-@app.route("/contact_form_submitted", methods=('POST'))
+@app.route("/contact_form_submitted", methods=('POST',))
 def contact_form_submitted():
 	
 	return render_template('contactFormSuccess.html')
