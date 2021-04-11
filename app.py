@@ -108,6 +108,12 @@ def verify_login():
 				return redirect('/')
 		else:
 			return redirect('/')
+
+@app.route("/contact_form_submitted", methods=('POST'))
+def contact_form_submitted():
+	
+	return render_template('contactFormSuccess.html')
+
 			
 @app.route("/graph_info", methods=['GET'])
 def graph_info():
