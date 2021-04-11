@@ -26,13 +26,15 @@ class providers(db.Model):
 	password = db.Column(db.String(100))
 	compName = db.Column(db.String(100))
 	salesRep = db.Column(db.String(100))
+	isAdmin = db.Column(db.Boolean(False))
 
 
-	def __init__(self, username, password, compName, salesRep):
+	def __init__(self, username, password, compName, salesRep, isAdmin):
 		self.username = username
 		self.password = password
 		self.compName = compName
 		self.salesRep = salesRep
+		self.isAdmin = isAdmin
 
 class drugsInStock(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
