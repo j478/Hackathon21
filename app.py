@@ -39,16 +39,20 @@ class providers(db.Model):
 class drugsInStock(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	name = db.Column(db.String(100))
+	stock = db.Column(db.Integer)
 	
-	def __init__(self, name):
+	def __init__(self, name, stock):
 		self.name = name
+		self.stock = stock
 
 class drugsPerscribed(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	name = db.Column(db.String(100))
+	numGiven = db.Column(db.Integer)
 	
-	def __init__(self, name):
+	def __init__(self, name, numGiven):
 		self.name = name
+		self.numGiven = numGiven
 		
 
 #loginForm
@@ -100,6 +104,11 @@ def verify_login():
 				return redirect('/')
 		else:
 			return redirect('/')
+			
+@app.route("/graph_info", methods=['GET'])
+def graph_info():
+	pass
+
 
 if __name__ == '__main__':
 	app.run()
