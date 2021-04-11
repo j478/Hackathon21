@@ -41,7 +41,11 @@ body {
 	position: abosolute;
 	left: 100px;
 }
-
+#chart {
+	position: absolute;
+	height: 50%;
+	width: 50%;
+}
 h1{
 	position: relative;
 	background: #3b6ab1;
@@ -60,15 +64,6 @@ nav{
 	background: #ce4343;
 	padding-top: 18px;
 }
-
-
-
-  canvas {
-	
-	background: #3b6ab1;
-  }
-  
-
 
 /* invisible box following each button  */
 nav ul{

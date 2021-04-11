@@ -10,7 +10,7 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.0/dist/chart.min.js"></script>
 	</head>
 
-	body>
+	<body>
         <div id="background">
 
             <header>
@@ -31,6 +31,22 @@
 
         <content>
             <h2>This is content</h2>
+			<button type="button" id="request" width="20" height='20'>request</button>
+			<script>
+				document.querySelector('#request').addEventListener('click', () => {
+				console.log("script2");
+					xml = new XMLHttpRequest();
+					xml.onreadystatechange = function() {
+						if (this.readyState === 4 && this.status === 200) {
+							console.log("debug1");
+							console.log(this.response);
+							//parseResponseJson(JSON.parse(this.response));
+						}
+					};
+					xml.open('GET', "/graph_info");
+					xml.send();
+				});
+			</script>
 
             
             <canvas id="chart" width="1" height="1"></canvas>
@@ -65,9 +81,11 @@
                     options: {
                         scales: {
                             y: {
-                                beginAtZero: true
+                                beginAtZero: true,
                             }
                         }
+						//responsive: true,
+						//maintainAspectRatio: false,
                     }
                 });
              </script>

@@ -111,7 +111,16 @@ def verify_login():
 			
 @app.route("/graph_info", methods=['GET'])
 def graph_info():
-	pass
+	drugNames = len(drugsPerscribed.query.all())
+	namesList = []
+	for i in range(1,drugNames):
+		namesList.append(drugsPerscribed.query.get(i).name)
+	drugLen = len(drugsPerscribed.query.all())
+	perscList = []
+	for i in range(1,drugLen):
+		perscList.append(drugsPerscribed.query.get(i).numGiven)
+	myList = [namesList,perscList]
+	return jsonify({ 'obj':myList })
 
 
 if __name__ == '__main__':
