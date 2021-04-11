@@ -86,7 +86,10 @@ h1{
 	display: inline-block;
 
 }
+h2{
+	
 
+}
 h3{
 	padding: 10px;
 }
@@ -98,7 +101,10 @@ nav{
 }
 
 
-  
+form {
+	background: #ffffff;
+	content: center;
+}
 
 
 /* invisible box following each button  */
