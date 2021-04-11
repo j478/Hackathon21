@@ -119,7 +119,10 @@ def graph_info():
 	perscList = []
 	for i in range(1,drugLen):
 		perscList.append(drugsPerscribed.query.get(i).numGiven)
-	myList = [namesList,perscList]
+	stockList = []
+	for i in range(1,drugLen):
+		stockList.append(drugsInStock.query.get(i).stock)
+		myList = [namesList,perscList,stockList]
 	return jsonify({ 'obj':myList })
 
 
