@@ -33,14 +33,14 @@
             <h2>This is content</h2>
 			<button type="button" id="request" width="20" height='20'>request</button>
 			<script>
+				let myData = "";
 				document.querySelector('#request').addEventListener('click', () => {
-				console.log("script2");
 					xml = new XMLHttpRequest();
 					xml.onreadystatechange = function() {
 						if (this.readyState === 4 && this.status === 200) {
-							console.log("debug1");
 							console.log(this.response);
-							//parseResponseJson(JSON.parse(this.response));
+							myData = JSON.parse(this.response);
+							console.log(JSON.parse(this.response));
 						}
 					};
 					xml.open('GET', "/graph_info");
