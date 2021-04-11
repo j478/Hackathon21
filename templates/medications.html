@@ -6,7 +6,9 @@
 		<meta http-equiv='expires' content='0'>
 		<meta http-equiv='pragma' content='no-cache'>
     	<title>Hackathon21</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.0/dist/chart.min.js"></script>
+        
 	</head>
 
 	<body>
@@ -27,7 +29,38 @@
                     </nav>
                 <hr/>
             </header>
-            
+            <content>
+
+                <table style="width:60%">
+                    <tr>
+                      <th>Drug name</th>
+                      <th>Id number</th> 
+                      <th>Amount in stock</th>
+                      <th>Amount prescribed</th>
+                    </tr>
+                    <tr>
+                      <td>Jill</td>
+                      <td>Smith</td>
+                      <td>50</td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>Eve</td>
+                      <td>Jackson</td>
+                      <td>94</td>
+                      <td> </td>
+                    </tr>
+                    <tr>
+                      <td>John</td>
+                      <td>Doe</td>
+                      <td>80</td>
+                      <td> </td>
+                    </tr>
+                  </table>
+
+
+            </content>
+
         </div>
         
         
