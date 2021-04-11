@@ -51,7 +51,7 @@ table{
 }
 
 #graph2 {
-	margin-left: 800px;
+	margin-left: 680px;
 	margin-top: 25px;
 }
 #graph3 {
@@ -63,10 +63,9 @@ table{
 
 #background {
 	position: absolute;
-	
 	width: 97%;
 	height: 95%;
-	background-color: #242424;
+	background-color: grey;
 }
 
 #username {
