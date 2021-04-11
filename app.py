@@ -27,13 +27,15 @@ class providers(db.Model):
 	password = db.Column(db.String(100))
 	compName = db.Column(db.String(100))
 	salesRep = db.Column(db.String(100))
+	isAdmin = db.Column(db.Boolean(False))
 
 
-	def __init__(self, username, password, compName, salesRep):
+	def __init__(self, username, password, compName, salesRep, isAdmin):
 		self.username = username
 		self.password = password
 		self.compName = compName
 		self.salesRep = salesRep
+		self.isAdmin = isAdmin
 
 def connect():
     return sqlite3.connect("data.db")
@@ -41,16 +43,20 @@ def connect():
 class drugsInStock(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	name = db.Column(db.String(100))
+	stock = db.Column(db.Integer)
 	
-	def __init__(self, name):
+	def __init__(self, name, stock):
 		self.name = name
+		self.stock = stock
 
 class drugsPerscribed(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	name = db.Column(db.String(100))
+	numGiven = db.Column(db.Integer)
 	
-	def __init__(self, name):
+	def __init__(self, name, numGiven):
 		self.name = name
+		self.numGiven = numGiven
 		
 
 #loginForm
@@ -102,6 +108,20 @@ def verify_login():
 				return redirect('/')
 		else:
 			return redirect('/')
+			
+@app.route("/graph_info", methods=['GET'])
+def graph_info():
+	drugNames = len(drugsPerscribed.query.all())
+	namesList = []
+	for i in range(1,drugNames):
+		namesList.append(drugsPerscribed.query.get(i).name)
+	drugLen = len(drugsPerscribed.query.all())
+	perscList = []
+	for i in range(1,drugLen):
+		perscList.append(drugsPerscribed.query.get(i).numGiven)
+	myList = [namesList,perscList]
+	return jsonify({ 'obj':myList })
+
 
 if __name__ == '__main__':
 	app.run()

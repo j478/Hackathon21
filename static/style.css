@@ -24,6 +24,10 @@ body {
 
 
 }
+.graph1 {
+	position: absolute;
+	background: #ddd;
+}
 
 #background {
 	position: absolute;
@@ -61,10 +65,7 @@ nav{
 	padding-top: 18px;
 }
 
-  .chart-container{
 
-	
-  }
   
 
 
