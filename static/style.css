@@ -103,7 +103,10 @@ nav{
 
 form {
 	background: #ffffff;
-	content: center;
+	background-size: 100px 100px;
+	height: 200px;
+	padding: 16px 16px;
+	text-align: center;
 }
 
 
