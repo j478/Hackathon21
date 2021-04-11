@@ -6,7 +6,8 @@
 		<meta http-equiv='expires' content='0'>
 		<meta http-equiv='pragma' content='no-cache'>
     	<title>Hackathon21</title>
-		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@3.1.0/dist/chart.min.js"></script>
 	</head>
 
 	<body>
@@ -26,6 +27,71 @@
                     </nav>
                 <hr/>
             </header>
+            <content>
+                <!- <h2>This is content</h2>
+                     <button type="button" id="request" width="20" height='20'>request</button>
+                     <script>
+                         document.querySelector('#request').addEventListener('click', () => {
+                         console.log("script2");
+                             xml = new XMLHttpRequest();
+                             xml.onreadystatechange = function() {
+                                 if (this.readyState === 4 && this.status === 200) {
+                                     console.log("debug1");
+                                     console.log(this.response);
+                                     //parseResponseJson(JSON.parse(this.response));
+                                 }
+                             };
+                             xml.open('GET', "/graph_info");
+                             xml.send();
+                         });
+                     </script>
+                    
+                     <div class="graph" id="graph2">
+                     <canvas id="canv2" width="400" height="400"></canvas> </div>
+                      <script> 
+                         var ctx = document.getElementById('canv2').getContext('2d');
+                       
+                         var myChart = new Chart(ctx, {
+                             type: 'bar',
+                             data: {
+                                 labels: ['Acetaminophen', 'Adderall', 'Benzonatate', 'Cephalexin', 'Fentanyl', 'Humira', 'Ibuprofen', 'Melatonin', 'Naproxen', 'Viagra'],
+                                 datasets: [{
+                                     label: '# of Votes',
+                                     data: [12, 19, 3, 5, 2, 3],
+                                     backgroundColor: [
+                                         'rgba(255, 99, 132, 0.2)',
+                                         'rgba(54, 162, 235, 0.2)',
+                                         'rgba(255, 206, 86, 0.2)',
+                                         'rgba(75, 192, 192, 0.2)',
+                                         'rgba(153, 102, 255, 0.2)',
+                                         'rgba(255, 159, 64, 0.2)'
+                                     ],
+                                     borderColor: [
+                                         'rgba(255, 99, 132, 1)',
+                                         'rgba(54, 162, 235, 1)',
+                                         'rgba(255, 206, 86, 1)',
+                                         'rgba(75, 192, 192, 1)',
+                                         'rgba(153, 102, 255, 1)',
+                                         'rgba(255, 159, 64, 1)'
+                                     ],
+                                     borderWidth: 1
+                                 }]
+                             },
+                             options: {
+                                 scales: {
+                                     y: {
+                                         beginAtZero: true,
+                                     }
+                                 },
+                                 responsive: true,
+                                 maintainAspectRatio: false
+                                 
+                             }
+                         });
+                      </script>
+
+                 </content>
+           
         </div>
 	</body>
 </html>
