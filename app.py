@@ -34,7 +34,14 @@ class providers(db.Model):
 		self.compName = compName
 		self.salesRep = salesRep
 
-class drugs(db.Model):
+class drugsInStock(db.Model):
+	_id = db.Column("id", db.Integer, primary_key=True)
+	name = db.Column(db.String(100))
+	
+	def __init__(self, name):
+		self.name = name
+
+class drugsPerscribed(db.Model):
 	_id = db.Column("id", db.Integer, primary_key=True)
 	name = db.Column(db.String(100))
 	
@@ -81,8 +88,14 @@ def login():
 @app.route("/verify_login", methods=['POST'])
 def verify_login():
 	if request.method == 'POST':
-		if (request.form['username'] == 'Jake' and request.form['password'] == 'D') or (request.form['username'] == 'Caleb' and request.form['password'] == 'B'):
-			return redirect('/dashboard')
+		name = request.form['username'];
+		passw = request.form['password'];
+		potential_user = providers.query.filter_by(username=name).first()
+		if potential_user:
+			if potential_user.password == passw:
+				return redirect('/dashboard')
+			else:
+				return redirect('/')
 		else:
 			return redirect('/')
 
